@@ -6,8 +6,17 @@ ru:
         price: Цена
         weight: Вес
         description: Описание
+      cart:
+        line_item: Элемент корзины
+      line_item:
+        price: Цена
+        quantity: Количество
+        cart: Корзина
+        product: Товар
     models:
       product: Товар
+      cart: Корзина
+      line_item: Элемент корзины
   views:
     pagination:
       first: "&laquo; Первая"
@@ -29,4 +38,11 @@ ru:
       price: Цена
       weiht: вес
       description: Описание
+    cart:
+      line_item: Элемент корзины
+    line_item:
+      price: Цена
+      quantity: Количество
+      cart: Корзина
+      product: Товар
 
