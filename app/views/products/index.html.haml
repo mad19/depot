@@ -1,13 +1,8 @@
 %h1 Список продуктов
 = link_to 'Новый товар', new_product_path, class: "btn btn-primary"
-<<<<<<< HEAD
-%br
-= paginate @products
-=======
 = paginate @products
 %br
   %br
->>>>>>> 586c76c204095770c6a652048dd2290c60f69532
 %ul.list-group
   %b
     .li.list-group-item-info
@@ -24,17 +19,9 @@
         .col-md-2
           .span.glyphicon.glyphicon-scale
           Вес
-<<<<<<< HEAD
-        .col-md-2
-          .span.glyphicon.glyphicon-pencil
-          Редактировать
-
-
-=======
         .col-md-3
           .span.glyphicon.glyphicon-pencil
           Редактирование
->>>>>>> 586c76c204095770c6a652048dd2290c60f69532
   %br
 
   - @products.each do |product|
@@ -48,24 +35,11 @@
           =number_to_currency(product.price, locale: :ru)
         .col-md-2
           = product.weight
-<<<<<<< HEAD
-        .col-md-2
-          .btn-group
-            %input.btn.btn-danger{:type => "Button"}
-              %ul.dropdown-menu
-                %li
-                  = link_to 'Посмотреть', product, class: "btn btn-info"
-                %li
-                  = link_to 'Изменить', edit_product_path(product), class: "btn btn-info"
-                %li
-                  = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }, class: "btn btn-info"
-=======
         .col-md-4
           .btn-group
             = link_to 'Посмотреть', product, class: "btn btn-primary"
             = link_to 'Изменить', edit_product_path(product), class: "btn btn-info"
             = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }, class: "btn btn-danger"
->>>>>>> 586c76c204095770c6a652048dd2290c60f69532
     %br
 
 = paginate @products
