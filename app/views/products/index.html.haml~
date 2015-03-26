@@ -2,7 +2,7 @@
 .row
   .col-md-3
     = link_to 'Новый товар', new_product_path, class: "btn btn-primary"
-  .col-md-4.pull-right
+  .col-md-9.pull-right
     = paginate @products
 
 %br
