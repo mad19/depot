@@ -3,27 +3,33 @@ ru:
     attributes:
       product:
         name: Название
+        description: Описание
         price: Цена
         weight: Вес
-        description: Описание
+        image: Изображение
       line_item:
-        quantity: Количество
         product: Товар
+        quantity: Количество
         price: Цена
       user:
-        email: Почта
+        email: Адрес эл. почты
         password: Пароль
+        password_confirmation: Подтверждение пароля
         phone_number: Телефон
-        address: Адрес
+        adress: Адрес
         role: Роль
+      order:
+        cart_id: Корзина
+        user_id: Пользователь
+        status: Статус заказа
+        address: Адрес доставки
+        comment: Комментарий
     models:
       product: Товар
       cart: Корзина
-      lineitem: Элемент Корзины
+      line_item: Элемент
       user: Пользователь
-
-
-
+      order: Заказ
   views:
     pagination:
       first: "&laquo; Первая"
@@ -35,8 +41,8 @@ ru:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "%{entry_name} не найден"
-          one: "Показание <b>1</b> %{entry_name}"
-          other: "Показание <b>all %{count}</b> %{entry_name}"
+          zero: "%{entry_name} не найдена"
+          one: "Отображение <b>1</b> %{entry_name}"
+          other: "Отображение <b>all %{count}</b> %{entry_name}"
       more_pages:
-        display_entries: "Показание %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> в сумме"
+        display_entries: "Отображение %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> из <b>%{total}</b> в общем"

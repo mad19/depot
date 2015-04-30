@@ -4,12 +4,12 @@ one:
   email: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
   phone_number: MyString
-  address: MyText
+  adress: MyText
   role: 1
 
 two:
   email: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
   phone_number: MyString
-  address: MyText
+  adress: MyText
   role: 1

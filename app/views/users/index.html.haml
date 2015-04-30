@@ -1,13 +1,24 @@
-%h1 Listing users
+.page-header
+  <h1>Список пользователей</h1>
 
-%table
+%table.table.table-bordered.table-hover
   %thead
     %tr
-      %th Email
-      %th Password
-      %th Phone number
-      %th Address
-      %th Role
+      %th
+        .fa.fa-envelope.li
+          Эл. почта
+      %th
+        .fa.fa-key.li
+          Пароль
+      %th
+        .fa.fa-phone.li
+          Номер телефона
+      %th
+        .fa.fa-home.li
+          Адрес
+      %th
+        .fa.fa-street-view.li
+          Роль
       %th
       %th
       %th
@@ -18,12 +29,24 @@
         %td= user.email
         %td= user.password
         %td= user.phone_number
-        %td= user.address
+        %td= user.adress
         %td= user.role
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to user, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"
+            Показать
+        %td
+          = link_to edit_user_path(user), class: "btn btn-link" do
+            =fa_icon "edit"
+            Редактировать
+        %td
+          = link_to user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+            =fa_icon "remove"
+            Удалить
 
-%br
+.br
 
-= link_to 'New User', new_user_path
+= link_to new_user_path, class: "btn btn-primary" do
+  =fa_icon "user-plus"
+  Новый пользователь
+

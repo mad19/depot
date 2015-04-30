@@ -11,21 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416121328) do
+ActiveRecord::Schema.define(version: 20150423115959) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "favors", force: :cascade do |t|
-    t.integer  "product_id"
-    t.boolean  "tick",       default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "favors", ["product_id"], name: "index_favors_on_product_id"
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "quantity"
@@ -39,28 +30,37 @@ ActiveRecord::Schema.define(version: 20150416121328) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "user_id"
+    t.text     "address"
+    t.integer  "status"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",                   precision: 15, scale: 2
+    t.decimal  "price",              precision: 15, scale: 2
     t.integer  "weight"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.string   "phone_number"
-    t.text     "address"
+    t.text     "adress"
     t.integer  "role"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

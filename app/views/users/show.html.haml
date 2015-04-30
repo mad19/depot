@@ -1,21 +1,21 @@
 %p#notice= notice
 
 %p
-  %b Email:
+  %b Эл. почта:
   = @user.email
 %p
-  %b Password:
+  %b Пароль:
   = @user.password
 %p
-  %b Phone number:
+  %b Номер:
   = @user.phone_number
 %p
-  %b Address:
-  = @user.address
+  %b Адрес:
+  = @user.adress
 %p
-  %b Role:
+  %b Роль:
   = @user.role
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to 'Редактировать', edit_user_path(@user)
 \|
-= link_to 'Back', users_path
+= link_to 'Назад', users_path

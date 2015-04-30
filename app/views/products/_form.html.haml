@@ -1,13 +1,14 @@
-
 = form_for @product do |f|
-  - if @product.errors.any?
-    #error_explanation
-      =error_messages_for(@product)
+  =error_messages_for(@product)
   .row
     .col-md-3
       .form-group
         =f.label :name
         =f.text_field :name, class: "form-control"
+    .col-md-3
+      .form-group
+        =f.label :image
+        =f.file_field :image
     .col-md-3
       .form-group
         =f.label :description
@@ -25,10 +26,4 @@
         .input-group
           =f.text_field :weight, class: "form-control"
           %span.input-group-addon г.
-    .col-md-4
-      .form-group
-        =f.label :image
-        =f.file_field :image
-
-
   .actions=f.submit nil, class: "btn btn-primary"
