@@ -14,6 +14,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'execjs'
+gem 'rails-i18n'
+gem 'russian'
+
+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -37,6 +43,10 @@ gem 'bootstrap-sass'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+gem "bcrypt"
+gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,5 +57,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
 
+
+end

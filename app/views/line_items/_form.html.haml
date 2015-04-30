@@ -1,5 +1,10 @@
 = form_for @line_item do |f|
-  =error_messages_for(@line_item)
+  - if @line_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@line_item.errors.count, "error")} prohibited this line_item from being saved:"
+      %ul
+        - @line_item.errors.full_messages.each do |msg|
+          %li= msg
 
   .field
     = f.label :quantity
@@ -13,5 +18,8 @@
   .field
     = f.label :product
     = f.text_field :product
+  .field
+    = f.label :tick
+    = f.text_field :tick
   .actions
     = f.submit 'Сохранить'

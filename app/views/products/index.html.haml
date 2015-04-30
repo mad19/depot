@@ -1,49 +1,56 @@
-%h1 Список продуктов
-.row
-  .col-md-3
-    = link_to 'Новый товар', new_product_path, class: "btn btn-primary"
-  .col-md-4.pull-right
-    = paginate @products
+.page-header
+  %h1 Товары
 
-%br
-  %br
-%ul.list-group
-  %b
-    .li.list-group-item-info
-      .row
-        .col-md-2
-          .span.glyphicon.glyphicon-flash
-          Название
-        .col-md-2
-          .span.glyphicon.glyphicon-info-sign
-          Описание
-        .col-md-2
-          .span.glyphicon.glyphicon-ruble
-          Цена
-        .col-md-2
-          .span.glyphicon.glyphicon-scale
+
+
+
+
+
+
+
+-#.row.pull-right.col-md-3{style: "white-space: nowrap"}
+-#  .glyphicon.glyphicon-chevron-right
+-#  -@sum,@sum2=0,0;@cart.line_items.each{|itm| @sum+=itm.quantity;@sum2+=itm.price*itm.quantity}
+-#  = link_to "В вашей корзине #{@sum} #{Russian.p(@sum,'товар','товара','товаров')}. Общая цена: #{number_to_currency(@sum2, separator: ",", delimiter: "", unit: "₽", format: "%n %u")}", @cart, class: "btn btn-danger", :style => "white-space:normal; width: 216px;"
+
+.container
+  -@products.each do |product|
+    .col-md-3
+      .list-group
+        .list-group-item
+          %h4
+            =product.name
+        .list-group-item
+          Цена:
+          .badge
+            =number_to_currency(product.price)
+        .list-group-item
+          Описание:
+          =product.description
+        .list-group-item
           Вес
-        .col-md-3
-          .span.glyphicon.glyphicon-pencil
-          Редактирование
-  %br
+          .badge
+            =product.weight
+            г.
+        .list-group-item
+          = link_to 'Показать', product, class: "btn btn-primary glyphicon glyphicon-search btn-sm"
+          = link_to 'В корзину', line_items_path(product_id: product.id), data:{method: :post, remote: :true}, class:"btn btn-danger glyphicon glyphicon-plus"
 
-  - @products.each do |product|
-    %li.list-group-item
-      .row
-        .col-md-2
-          = product.name
-        .col-md-2
-          = product.description
-        .col-md-2
-          =number_to_currency(product.price, locale: :ru)
-        .col-md-2
-          = product.weight
-        .col-md-4
-          .btn-group
-            = link_to 'Посмотреть', product, class: "btn btn-primary"
-            = link_to 'Изменить', edit_product_path(product), class: "btn btn-info"
-            = link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Уверены?' }, class: "btn btn-danger"
-    %br
+        .list-group-item= link_to 'Редактировать', edit_product_path(product)
+        .list-group-item= link_to 'Удалить', product, :method => :delete, :data => { :confirm => 'Вы уверены?' }
 
+
+
+
+
+
+
+
+
+
+
+.br
+
+= link_to 'Новый продукт', new_product_path, class: "btn btn-primary"
+.br
 = paginate @products
