@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+
+  after_create :send_mail
+
   belongs_to :cart
   belongs_to :user
   has_many :line_items, dependent: :destroy
@@ -24,4 +27,9 @@ class Order < ActiveRecord::Base
       line_items << l_i
     end
   end
+  def send_mail
+    OrderMailer.info_email(self).deliver_later
+    true
+  end
+
 end

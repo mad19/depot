@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}, if: "password.present?"
   validates :email, presence: true, uniqueness: {case_sensitive: false}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   validates :role, presence: true, inclusion: {in: 0...ROLES.size}
-  has_one :order, dependent: :nullify
+  has_many :orders, dependent: :nullify
 
   def moderator?
     self.role==1 || admin?
